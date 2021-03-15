@@ -1,0 +1,7 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "M   MEEENNN  OO FFF W     WA  RRR\nMM MMEE N N O  OFF   W W WA A RRRR\nM M MEEEN N  OO F     W WA   AR  R\n\nIs a awesome game. ^.-\nAvailable on Steam.";
+}
