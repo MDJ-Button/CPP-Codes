@@ -1,0 +1,118 @@
+/**********************************
+* Storing words and printing them *
+**********************************/
+
+#include <iostream>
+#include <vector>
+
+class Word
+{
+    public:
+    std::vector <std::string> WordBox; 
+
+    void Add();
+    void Store(std::string Input); 
+    void Display();
+    private:
+};
+
+class Application
+{
+    public:
+    bool Running;
+    bool IsAppRunning(bool Started);
+
+    private:
+    void EventHandler(int Event);
+    void AppLoop();
+    void CheckInput(std::string Input);
+
+    Word word;
+};
+
+bool Application::IsAppRunning(bool Started)
+{
+    if(Started == true) AppLoop();
+}
+
+void Application::EventHandler(int Event)
+{
+    if(Event == 0) 
+    {
+        Running = false;
+    }
+
+    if(Event == 1) 
+    {
+        word.Add();
+    }
+
+    if(Event == 2) 
+    {
+        word.Display();
+    }
+}
+
+void Application::AppLoop()
+{
+    std::string GetInput;
+
+    while(Running == true)
+    {
+        std::cout << std::endl << "Enter one of the following options.\nQuit\nAdd\nPrint" << std::endl;
+
+        std::cin >> GetInput;
+        
+        CheckInput(GetInput);
+    }
+}
+
+void Application::CheckInput(std::string Input)
+{
+    if(Input == "Quit") 
+    {
+        std::cout << "Exiting" << std::endl;
+        EventHandler(0);
+    }
+    
+    if(Input == "Add") 
+    {
+        std::cout << "Enter the word you wish to add to the word box" << std::endl;
+        EventHandler(1);
+    }
+
+    if(Input == "Print") 
+    {
+        EventHandler(2);
+    }
+}
+
+void Word::Add()
+{
+    std::string Input;
+    std::cin >> Input;
+    Store(Input);
+}
+
+void Word::Store(std::string Input)
+{
+    WordBox.push_back(Input);
+}
+
+void Word::Display()
+{
+    for(unsigned int i = 0; i < WordBox.size(); i++)
+    {
+        std::cout << WordBox[i] << std::endl;
+    }
+}
+
+
+int main()
+{
+    Application application;
+        application.Running = true;
+            application.IsAppRunning(application.Running);
+
+    return 0;
+}
