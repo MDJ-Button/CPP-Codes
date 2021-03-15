@@ -1,0 +1,13 @@
+#include <iostream>
+
+void inline_if(int conditionA, int conditionB)
+{
+    std::cout << (( conditionA >= conditionB) ? "true" : "false") << std::endl;
+}
+
+int main() 
+{
+    inline_if(2, 4);
+    inline_if(4, 2);
+    return 0;
+}
