@@ -1,0 +1,55 @@
+/*Updated version of my Consle Calculator code.
+*
+*Link to compiler I use on my phone
+*https://play.google.com/store/apps/details?id=org.zhiyuan.zhiyuan24
+*
+*By Martin De Jonge
+*/
+
+#include <iostream>
+
+int main()
+{
+    int value_a;
+    std::string op;
+    int value_b;
+   
+    std::cout << "Enter a value then the arithmetic operator and then another value." << std::endl;
+
+    std::cin >> value_a;
+    std::cin >> op;
+    
+    if(op == "+")
+    {
+        std::cin >> value_b;
+        std::cout << std::endl << value_a << op << value_b << "=" << value_a + value_b << std::endl << std::endl;
+        return main();
+    }
+
+    else if(op == "-")
+    {
+         std::cin >> value_b;
+         std::cout << std::endl << value_a << op << value_b << "=" << value_a - value_b << std::endl << std::endl;
+         return main();
+    }
+
+    else if(op == "*" || op == "×" || op == "x")
+    {
+        std::cin >> value_b;
+        std::cout << std::endl << value_a << op << value_b << "=" << value_a * value_b << std::endl << std::endl;
+        return main();
+    }
+
+    else if(op == "/" || op == "÷")
+    {
+        std::cin >> value_b;
+        std::cout << std::endl << value_a << op << value_b << "=" << value_a / value_b << std::endl << std::endl;
+        return main();
+    }
+
+    else
+    {
+        std::cout << "invalid operator." << std::endl << std::endl;
+        return main();
+    }
+}
