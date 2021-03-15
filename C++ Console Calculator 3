@@ -1,0 +1,35 @@
+//This is my third version of a console calculator, this is mobile version for Sololearn only.
+
+/*******************
+* Enter a sum like *
+* 5                *
+* +                *
+* 5                *
+********************/
+
+/*I made changes to the code because I read a artical about why several entries and exits into a function is consider bad.
+I am really pushing to improve my code and write more readable and safer code so please comment, I would like to hear your opinions.*/
+
+#include <iostream>
+class Calculator 
+{
+    public:
+        int Sum(int a, std::string OP, int b)
+        {
+            int result;
+            
+            if(OP == "+") result = a+b;
+            if(OP == "-") result = a-b;
+            if(OP == "/") result = a/b;
+            if(OP == "*" || OP == "x") result = a*b;
+            
+            return result;
+        }
+};
+
+int main()
+{
+    Calculator c;
+    std::cout << c.Sum(1, "+", 2);
+    return 0;
+}
