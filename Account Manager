@@ -1,0 +1,115 @@
+//By Martin De Jonge
+//The idea is too store account data.
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+//We put everything inside this class so that everything is in one scope.
+class App
+{
+
+public: //We make everything public inside
+
+//The create function, we create accounts here
+void Create()
+{
+    
+    App app;
+
+    string name; string surname; 
+    string email; string password; //Our string nest ^-^
+    string extrainfo;
+
+    cout << "Please enter your first name" << endl;
+        cout << "Name: "; cin >> name; cout << endl << endl;
+
+    cout << "Please enter your last name" << endl;
+        cout << "Surname: "; cin >> surname; cout << endl << endl;
+
+    cout << "Please enter your email" << endl;
+        cout << "Email: "; cin >> email; cout << endl << endl;
+
+    cout << "Please enter the email password" << endl;
+        cout << "Email Password: "; cin >> password; cout << endl << endl;
+
+    cout << "If you have any other info you want attached to this account please enter it, else just leave open." << endl;
+        cout << "Info: "; cin >> extrainfo; cout << endl << endl;
+
+    ofstream CreateFile("account.dt");//Here we create the file
+    
+    CreateFile << "Account Info\n" 
+                       << "Name: " << name << " "<< surname << "\n"
+                       << "Email: " << email << "\n"
+                       << "Email Password: " << password << "\n\n"
+                       << "Info:\n" << extrainfo;
+    CreateFile.close();
+
+    app.Menu();//Here we return to the menu
+
+}
+
+
+//The load function, we load accounts here
+void Load()
+{
+    string line;
+    ifstream create("account.dt");
+    while ( getline (create, line) ) {
+        cout << line << '\n';
+    }
+    create.close();
+}
+
+
+//Menu fucntion, we start here
+int Menu()
+{
+
+    //Lets make a console menu 
+        //Lets get the user input and have a error check
+
+    string MenuNum;//Our string
+        ErrorNotValidNum://When the goto works it jumps to here.
+
+    cout << "Account Manager v0.1" << endl << endl;
+        cout << "To select enter the number and press enter" << endl << endl;
+
+    cout << "1.Create a Account" << endl;
+        cout << "2.Load a Account" << endl;
+            cout << "3.Exit" << endl;
+
+    cin >> MenuNum;
+        
+            if(MenuNum == "1")
+            {
+                Create(); // Create accounts
+            }
+            
+            else if(MenuNum == "2")
+            {
+                Load(); // Loads accounts
+            }
+
+            else if(MenuNum == "3")
+            {
+                return 0; // Exit app
+            }
+
+            else // Nice little error using goto
+            {
+                cout << MenuNum << " is not a valid number, please enter a valid number to make a selection." << endl << endl;
+                    goto ErrorNotValidNum;
+            }
+}
+
+};
+
+//The main just loads Menu
+int main()
+{
+    App app;
+    app.Menu();//Here we start
+}
