@@ -1,5 +1,5 @@
 //By Martin De Jonge
-//The idea is too store account data.
+//The idea is to store account data.
 
 #include <iostream>
 #include <fstream>
